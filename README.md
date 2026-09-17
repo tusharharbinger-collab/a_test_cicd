@@ -22,3 +22,19 @@ uvicorn main:app --host 0.0.0.0 --port 8080
     "version": "1.0.0"
   }
   ```
+
+## Automated Tests
+
+Run the test suite with:
+
+```bash
+python -m pytest
+```
+
+## CI/CD Pipeline
+
+Automated tests and Docker build checks run on every push and pull request to `main` via GitHub Actions (`.github/workflows/ci.yml`).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,0 +1,38 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "3c8466e761df9f7a731ef78f0d8a57e3f81e3a1f94294c7b809a9faea9a0a001"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.11"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "fastapi": {
+            "hashes": [],
+            "version": "==0.111.0"
+        },
+        "uvicorn": {
+            "hashes": [],
+            "version": "==0.30.1"
+        }
+    },
+    "develop": {
+        "pytest": {
+            "hashes": [],
+            "version": "==8.2.2"
+        },
+        "httpx": {
+            "hashes": [],
+            "version": "==0.27.0"
+        }
+    }
+}
