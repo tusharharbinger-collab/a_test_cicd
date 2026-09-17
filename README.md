@@ -12,6 +12,7 @@ uvicorn main:app --host 0.0.0.0 --port 8080
 
 ## Routes
 
+- `GET /`: Interactive web dashboard, real-time health probe monitor, and API path tester
 - `GET /healthz`: Health check returning `{"status": "ok"}`
 - `GET /{full_path:path}`: Catch-all route echoing received path:
   ```json
