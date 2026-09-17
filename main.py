@@ -1,8 +1,8 @@
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
-app = FastAPI(title="a_test_cicd", version="1.1.0")
+app = FastAPI(title="a_test_cicd", version="1.0.0")
 
 STATIC_INDEX = Path(__file__).parent / "static" / "index.html"
 
@@ -16,16 +16,13 @@ def root():
 
 @app.get("/healthz")
 def healthz():
-    # Deliberately left healthy — this is what ECS's own target-group health
-    # check hits directly, bypassing the ALB's path prefix entirely. The
-    # point of this drill is to prove the platform's *separate* live-URL
-    # check (through the real ALB, with the real prefix) catches a failure
-    # that a target-group health check alone would miss.
     return {"status": "ok"}
 
 
 @app.get("/{full_path:path}")
 def catch_all(full_path: str):
-    # Deliberately broken for this rollback drill — this is what a real
-    # visitor's request through the shared ALB actually hits.
-    raise HTTPException(status_code=500, detail="Deliberately broken for blue-green rollback drill")
+    return {
+        "received_path": full_path,
+        "message": "Hello from the Python test app",
+        "version": "1.0.0",
+    }
