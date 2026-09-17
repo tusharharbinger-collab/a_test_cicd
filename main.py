@@ -1,5 +1,5 @@
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
 app = FastAPI(title="a_test_cicd", version="1.1.0")
@@ -21,4 +21,8 @@ def healthz():
 
 @app.get("/{full_path:path}")
 def catch_all(full_path: str):
-    raise HTTPException(status_code=500, detail="Deliberately broken for blue-green rollback drill (attempt 2, post-fix)")
+    return {
+        "received_path": full_path,
+        "message": "Hello from the Python test app",
+        "version": "1.1.0",
+    }
